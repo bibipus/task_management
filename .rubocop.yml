@@ -1,8 +1,144 @@
-# Omakase Ruby styling for Rails
-inherit_gem: { rubocop-rails-omakase: rubocop.yml }
+AllCops:
+  NewCops: enable
+  Exclude:
+    - '**/public/**/*'
+    - '**/vendor/**/*'
+    - '**/db/schema.rb'
+    - '**/spec/dummy/**/*'
+    - '**/test/**/*'
+    - 'test/**/*'
 
-# Overwrite or add rules to create your own house style
-#
-# # Use `[a, [b, c]]` not `[ a, [ b, c ] ]`
-# Layout/SpaceInsideArrayLiteralBrackets:
-#   Enabled: false
+require:
+  - rubocop-rails
+  - rubocop-performance
+
+Rails:
+  Enabled: true
+
+Rails/FilePath:
+  Enabled: true
+  EnforcedStyle: arguments
+
+Style/Documentation:
+  Enabled: false
+Bundler/OrderedGems:
+  Enabled: false
+Metrics/ClassLength:
+  Enabled: false
+Style/TrailingCommaInArrayLiteral:
+  Enabled: false
+Style/TrailingCommaInHashLiteral:
+  Enabled: false
+Layout/TrailingEmptyLines:
+  Enabled: false
+Style/EmptyMethod:
+  Enabled: false
+Layout/LineLength:
+  Max: 120
+Metrics/AbcSize:
+  Max: 25
+Metrics/CyclomaticComplexity:
+  Max: 15
+Metrics/PerceivedComplexity:
+  Max: 11
+Metrics/MethodLength:
+  Max: 20
+
+Style/SymbolArray:
+  Enabled: true
+
+Layout/FirstHashElementIndentation:
+  Enabled: true
+  EnforcedStyle: consistent
+
+Layout/AccessModifierIndentation:
+  Enabled: true
+  EnforcedStyle: indent
+
+Layout/SpaceAroundMethodCallOperator:
+  Enabled: true
+
+Layout/EmptyLinesAroundAttributeAccessor:
+  Enabled: true
+
+Lint/RaiseException:
+  Enabled: true
+
+Lint/StructNewOverride:
+  Enabled: true
+
+Style/ExponentialNotation:
+  Enabled: true
+
+Style/HashEachMethods:
+  Enabled: true
+
+Style/HashTransformKeys:
+  Enabled: true
+
+Style/HashTransformValues:
+  Enabled: true
+
+Style/SlicingWithRange:
+  Enabled: false
+
+Rails/ActionFilter:
+  Enabled: true
+  EnforcedStyle: action
+
+Layout/HashAlignment:
+  EnforcedHashRocketStyle: key
+  EnforcedColonStyle: key
+
+Lint/SuppressedException:
+  Enabled: true
+
+Style/MethodDefParentheses:
+  Enabled: true
+
+Lint/Debugger:
+  Enabled: true
+
+# { ... } for multi-line blocks is okay, follow Weirichs rule instead:
+# https://web.archive.org/web/20140221124509/http://onestepback.org/index.cgi/Tech/Ruby/BraceVsDoEnd.rdoc
+Style/BlockDelimiters:
+  Enabled: false
+
+Style/CollectionMethods:
+  Enabled: true
+
+Rails/ApplicationRecord:
+  Enabled: true
+
+Rails/SkipsModelValidations:
+  Enabled: false
+
+Layout/ParameterAlignment:
+  Enabled: true
+  EnforcedStyle: with_first_parameter
+
+Layout/MultilineMethodCallIndentation:
+  Enabled: true
+  EnforcedStyle: aligned
+
+Layout/DotPosition:
+  Enabled: true
+  EnforcedStyle: leading
+
+Performance/ChainArrayAllocation:
+  Enabled: true
+
+Lint/DeprecatedOpenSSLConstant:
+  Enabled: true
+
+Lint/MixedRegexpCaptureTypes:
+  Enabled: true
+
+Style/RedundantRegexpCharacterClass:
+  Enabled: true
+
+Style/RedundantRegexpEscape:
+  Enabled: true
+
+Style/RedundantFetchBlock:
+  Enabled: false

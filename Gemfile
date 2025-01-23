@@ -28,6 +28,15 @@ gem "solid_cache"
 gem "solid_queue"
 gem "solid_cable"
 
+gem "devise", "~> 4.9"
+gem "pagy", "~> 9.3"
+gem "bullet", "~> 8.0"
+
+gem "slim-rails", "~> 3.7"
+gem "simple_form", "~> 5.3"
+gem 'sass-rails'
+gem 'bootstrap', '~> 5.3.3'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
@@ -49,6 +58,12 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
+
+  gem 'rubocop'
+  gem 'rubocop-rails'
+  gem 'rubocop-performance'
+  gem 'rubocop-rspec'
+
 end
 
 group :development do
