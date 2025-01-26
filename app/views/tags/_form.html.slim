@@ -1,0 +1,6 @@
+= form_with(model: @tag, local: true) do |f|
+  .form-group
+    = f.label :title, 'Název'
+    = f.text_field :title, class: 'form-control'
+
+  = f.submit class: 'btn btn-primary'

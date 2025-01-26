@@ -1,0 +1,22 @@
+<h1>Moje projekty</h1>
+
+<%= link_to "Nový projekt", new_project_path %>
+
+<table>
+  <thead>
+  <tr>
+    <th>Název</th>
+    <th>Pořadí</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @projects.each do |project| %>
+    <tr>
+      <td><%= link_to project.title, project %></td>
+      <td><%= project.position %></td>
+      <td><%= link_to "Editovat", edit_project_path(project) %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

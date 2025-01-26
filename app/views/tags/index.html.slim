@@ -1,0 +1,14 @@
+h1 Moje Tagy
+
+= link_to 'Nový Tag', new_tag_path
+
+table
+  thead
+    tr
+      th Název
+      th
+  tbody
+    - @tags.each do |tag|
+      tr
+        td = link_to tag.title, tag
+        td = link_to 'Upravit', edit_tag_path(tag)
