@@ -7,8 +7,14 @@ Rails.application.routes.draw do
   get 'projects/edit'
   devise_for :users
 
-  resources :projects
-  resources :tasks
+  resources :projects do
+    resources :tasks, only: [:index]
+  end
+  resources :tasks do
+    member do
+      patch :toggle_done
+    end
+  end
   resources :tags
 
   root 'tasks#index'
