@@ -1,0 +1,59 @@
+= simple_form_for(@task, local: true) do |f|
+  .card.mt-4.card-body
+
+    h5= t('.basic_info')
+    .row.g-3
+      .col-md-12
+        = f.input :title,
+                label: t('.title_label'),
+                placeholder: t('.title_placeholder')
+
+    = f.input :description,
+            as: :text,
+            label: t('description_label'),
+            placeholder: t('.description_placeholder'),
+            input_html: { rows: 3 }
+
+    hr
+
+    h5= t('.is_done_section')
+    p.small.text-muted= t('.is_done_help')
+
+    .form-check.form-switch.mb-3
+      = f.check_box :is_done, class: "form-check-input"
+      = f.label :is_done, t('.is_done_label'), class: "form-check-label ms-2"
+
+    hr
+
+    h5= t('.tags_section')
+    p.small.text-muted= t('.tags_help')
+    .tag-scroll.mt-2
+      = f.collection_check_boxes :tag_ids,
+              current_user.tags,
+              :id, :title do |tag_check|
+        .form-check.mb-1
+          = tag_check.check_box(class: "form-check-input")
+          = tag_check.label(class: "form-check-label ms-1")
+
+    hr
+
+    h5= t('.project_section')
+    p.small.text-muted= t('.project_help')
+    = f.input :project_id,
+            collection: current_user.projects,
+            label_method: :title,
+            value_method: :id,
+            include_blank: t('.project_blank'),
+            label: t('.project_label')
+
+    hr
+
+    h5= t('.attachment_section')
+    p.small.text-muted= t('.attachment_help')
+    = f.input :attachment,
+            as: :file,
+            label: t('.attachment_label')
+
+    .bg-white.border-0
+      = f.button :submit, t('.save_changes'), class: "btn btn-primary"
+

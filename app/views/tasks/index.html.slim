@@ -1,68 +1,87 @@
-.container
-  / -- Titulek + tlačítko "Nový úkol"
-  .row.mb-4.align-items-center
-    .col
-      h1.h3
-        - if @project
-          | Úkoly v projektu
-          = @project.title
-        - else
-          | Všechny úkoly
-    .col-auto
-      = link_to "Nový úkol", new_task_path, class: "btn btn-primary"
+.row
+  .col-12
+    .hero
+      - if @project
+        h1= t('.tasks_in_project', project: @project.title)
+      - else
+        h1= t('.all_tasks')
 
-  / -- Filtr: Vše, Hotové, Nehotové
-  .mb-3
-    | Zobrazit:
-    = link_to "Vše", request.params.merge(filter: nil, page: nil), class: "btn btn-outline-secondary btn-sm ms-2"
-    = link_to "Hotové", request.params.merge(filter: 'done', page: nil), class: "btn btn-outline-success btn-sm ms-2"
-    = link_to "Nehotové", request.params.merge(filter: 'not_done', page: nil), class: "btn btn-outline-warning btn-sm ms-2"
+= form_with url: request.path, method: :get, local: true do
+  .row.g-3
+    .col-md-4
+      .card.h-100
+        .card-body.d-flex.flex-column
+          h4.mb-3= t('.search_title')
+          = text_field_tag :q,
+                  params[:q],
+                  class: "form-control mb-2",
+                  placeholder: t('.search_placeholder')
+          p.small.text-muted= t('.search_help')
 
-  / -- Card s formulářem
-  .card.mb-4
-    .card-body
-      = simple_form_for :search, url: request.path, method: :get, html: { local: true } do |f|
-        .row.g-3
-          .col-md-4
-            = f.input :q,
-                    label: "Vyhledat úkol",
-                    input_html: { name: 'q', value: params[:q] }
+    .col-md-4
+      .card.h-100
+        .card-body.d-flex.flex-column
+          h4.mb-3= t('.status_title')
+          .mb-2
+            = radio_button_tag :filter, nil, (params[:filter].blank? || params[:filter] == ""), id: 'filter_all'
+            = label_tag 'filter_all', t('.filter_all'), class: "ms-1"
+          .mb-2
+            = radio_button_tag :filter, 'done', (params[:filter] == 'done'), id: 'filter_done'
+            = label_tag 'filter_done', t('.filter_done'), class: "ms-1"
+          .mb-2
+            = radio_button_tag :filter, 'not_done', (params[:filter] == 'not_done'), id: 'filter_not_done'
+            = label_tag 'filter_not_done', t('.filter_not_done'), class: "ms-1"
 
-          .col-md-8
-            p.mb-2 Můžete vybrat jeden nebo více Tagů:
-            .row
-              - current_user.tags.each do |tag|
-                .col-auto
-                  .form-check
-                    = check_box_tag 'tag_ids[]',
-                            tag.id,
-                            params[:tag_ids]&.include?(tag.id.to_s),
-                            class: 'form-check-input',
-                            id: "tag_#{tag.id}"
-                    = label_tag "tag_#{tag.id}", tag.title, class: 'form-check-label'
+    .col-md-4
+      .card.h-100
+        .card-body.d-flex.flex-column
+          h4.mb-3= t('.tags_title')
+          .tag-scroll.flex-grow-1
+            - current_user.tags.each do |tag|
+              .form-check.mb-1
+                = check_box_tag 'tag_ids[]',
+                        tag.id,
+                        params[:tag_ids]&.include?(tag.id.to_s),
+                        class: 'form-check-input',
+                        id: "tag_#{tag.id}"
+                = label_tag "tag_#{tag.id}", tag.title, class: 'form-check-label ms-1'
 
-        .mt-3
-          = f.button :submit, "Filtrovat", class: 'btn btn-primary'
+  .row.mt-3
+    .col-12
+      = submit_tag t('.filter_button'), class: "btn btn-primary"
 
-  / -- Tabulka s úkoly
-  .card
-    .card-body
-      table.table.table-striped.table-hover
-        thead
-          tr
-            th Název
-            th Hotovo?
-        tbody
-          - @tasks.each do |task|
-            tr
-              td
-                - if params[:q].present?
-                  = highlight_term(task.title, params[:q])
-                - else
-                  = task.title
-              td = task.is_done ? "Ano" : "Ne"
+.row.g-3.mt-4
+  - @tasks.each do |task|
+    .col-md-6
+      .card.h-100
+        .card-body
+          h5.card-title
+            - if params[:q].present?
+              = highlight_term(task.title, params[:q])
+            - else
+              = task.title
 
-      / -- Pagy navigace
-      .pag-bar.mt-4
-        - if @pagy
-          == pagy_bootstrap_nav(@pagy)
+          p.card-text
+            b= t('.status')
+            |
+            = task.is_done ? t('.done') : t('.not_done')
+
+          - if task.tags.any?
+            p.card-text
+              b= t('.tags')
+              - task.tags.each do |t|
+                span.badge.bg-info.mx-1= t.title
+
+        .card-footer.bg-white.border-0
+          = link_to (task.is_done ? t('.mark_as_not_done') : t('.mark_as_done')),
+                  toggle_done_task_path(task),
+                  method: :patch,
+                  data: { turbo_method: :patch },
+                  class: "btn btn-sm btn-outline-success me-2"
+
+          = link_to t('.detail'), task_path(task), class: "btn btn-sm btn-primary"
+          = link_to t('.edit'), edit_task_path(task), class: "btn btn-sm btn-secondary ms-2"
+
+.mt-4
+  - if @pagy
+    == pagy_bootstrap_nav(@pagy)

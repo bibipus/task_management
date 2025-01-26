@@ -1,2 +1,91 @@
 cs:
-  hello: "Hello world"
+  layout:
+    navbar:
+      brand: "TaskManager"
+      projects: "Projekty"
+      tasks: "Úkoly"
+      tags: "Tagy"
+      logged_in: "Přihlášen"
+      logout: "Odhlásit se"
+      login: "Přihlásit se"
+      register: "Registrace"
+
+  tasks:
+    show:
+      hero_title: "Detaily úkolu"
+      hero_subtitle: "Zde najdeš všechny informace o zvoleném úkolu"
+
+      project: "Projekt:"
+      status: "Stav:"
+      done: "Hotový"
+      not_done: "Nehotový"
+
+      link_toggle_not_done: "[Označit jako nehotový]"
+      link_toggle_done: "[Označit jako hotový]"
+
+      description: "Popis:"
+      no_description: "Nejsou zadány další informace k úkolu."
+
+      tags: "Tagy:"
+      attachment: "Příloha:"
+
+      link_edit: "Upravit"
+      link_delete: "Smazat"
+      link_delete_confirm: "Opravdu chcete smazat tento úkol?"
+
+      link_back_to_list: "Zpět na seznam úkolů"
+
+    index:
+      tasks_in_project: "Úkoly v projektu: %{project}"
+      all_tasks: "Všechny úkoly"
+
+      search_title: "Hledání"
+      search_placeholder: "Název úkolu..."
+      search_help: "Zadej klíčové slovo pro vyhledání úkolu."
+
+      status_title: "Stav úkolu"
+      filter_all: "Vše"
+      filter_done: "Hotové"
+      filter_not_done: "Nehotové"
+
+      tags_title: "Tagy"
+
+      filter_button: "Filtrovat"
+
+      status: "Stav:"
+      done: "Hotový"
+      not_done: "Nehotový"
+      tags: "Tagy:"
+
+      mark_as_done: "Označit jako hotový"
+      mark_as_not_done: "Označit jako nehotový"
+      detail: "Detail"
+      edit: "Editovat"
+
+    form:
+      basic_info: "Základní informace"
+      title_label: "Název úkolu"
+      title_placeholder: "Např. Nakoupit potraviny"
+      description_label: "Popis úkolu"
+      description_placeholder: "Stručný popis, co je potřeba udělat"
+
+      is_done_section: "Stav úkolu"
+      is_done_help: "Pomocí tohoto přepínače označ, zda je úkol dokončen."
+      is_done_label: "Hotový"
+
+      tags_section: "Tagy"
+      tags_help: "Vyber jeden či více tagů pro tento úkol:"
+
+      project_section: "Projekt"
+      project_help: "Přiřaď úkol k projektu (pokud chceš)."
+      project_label: "Projekt"
+      project_blank: "Bez projektu"
+
+      attachment_section: "Příloha"
+      attachment_help: "Můžeš nahrát soubor (obrázek, dokument) k tomuto úkolu."
+      attachment_label: "Příloha"
+
+      save_changes: "Uložit změny"
+  time:
+    formats:
+      short: "%d.%m.%Y %H:%M"

@@ -1,0 +1,9 @@
+.row
+  .col-12
+    .hero
+      h1 Upravit úkol
+
+
+= render 'form', task: @task
+
+= link_to "Zpět na detail", @task, class: "btn btn-outline-secondary mt-3"

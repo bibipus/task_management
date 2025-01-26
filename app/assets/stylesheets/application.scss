@@ -1,1 +1,165 @@
 @import "bootstrap";
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap");
+
+$primary-color: #5B65EA;
+$secondary-color: #F7F8FD;
+$accent-color: #46c2ad;
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: $secondary-color;
+    color: #333;
+    margin: 0;
+    padding-top: 70px;
+}
+
+/* --------------------------------------------
+ *  Navbar
+ * --------------------------------------------
+ */
+.navbar-custom {
+    background: linear-gradient(135deg, #5B65EA, #9EABE4);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+
+    .navbar-brand {
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        color: #fff !important;
+    }
+
+    .nav-link {
+        color: #fff !important;
+        transition: color 0.15s ease-in-out;
+
+        &:hover {
+            color: $accent-color !important;
+            text-decoration: underline;
+        }
+    }
+}
+
+/* --------------------------------------------
+ *  Flash messages (Bootstrap alerts)
+ * --------------------------------------------
+ */
+.alert {
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    border: none;
+
+    &.alert-success {
+        background-color: #d3f9d8;
+        color: #0b5134;
+    }
+
+    &.alert-danger {
+        background-color: #fde2e2;
+        color: #611a1a;
+    }
+
+    &.alert-info {
+        background-color: #cce5ff;
+        color: #0c5460;
+    }
+}
+
+/* --------------------------------------------
+ *  Cards
+ * --------------------------------------------
+ */
+.card {
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    background-color: #fff;
+
+    .card-body {
+        border-radius: 8px;
+    }
+}
+
+/* --------------------------------------------
+ *  Hero
+ * --------------------------------------------
+ */
+.hero {
+    background: linear-gradient(135deg, #9EABE4, #5B65EA);
+    padding: 40px;
+    border-radius: 10px;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+
+    h1 {
+        font-weight: 600;
+        font-size: 2rem;
+        margin-bottom: 10px;
+    }
+
+    p {
+        font-size: 1.2rem;
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+        transform: rotate(25deg);
+    }
+}
+
+/* --------------------------------------------
+ *  Table
+ * --------------------------------------------
+ */
+.table-striped tbody tr {
+    transition: background-color 0.15s;
+
+    &:nth-of-type(odd) {
+        background-color: rgba($primary-color, 0.05);
+    }
+
+    &:hover {
+        background-color: rgba($primary-color, 0.15);
+    }
+}
+
+/* --------------------------------------------
+ *  Pagy
+ * --------------------------------------------
+ */
+.pag-bar .page-item.active .page-link {
+    background-color: $primary-color;
+    border-color: $primary-color;
+}
+
+/* --------------------------------------------
+ *  Buttons
+ * --------------------------------------------
+ */
+.btn-primary {
+    background-color: $primary-color;
+    border-color: $primary-color;
+
+    &:hover {
+        background-color: darken($primary-color, 5%);
+        border-color: darken($primary-color, 5%);
+    }
+}
+
+
+.tag-scroll {
+    max-height: 150px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 8px;
+}
+
