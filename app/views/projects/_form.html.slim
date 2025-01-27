@@ -5,15 +5,14 @@
     .row.g-3
       .col-md-12
         = f.input :title,
-                label: t('.title_label', default: 'Název'),
-                placeholder: t('.title_placeholder', default: 'Zadejte název projektu'),
+                label: t('.title_label'),
+                placeholder: t('.title_placeholder'),
                 input_html: { class: 'form-control' }
 
       = f.input :position,
-              label: t('.position_label', default: 'Pořadí'),
-              placeholder: t('.position_placeholder', default: 'Zadejte pořadí'),
+              label: t('.position_label'),
+              placeholder: t('.position_placeholder'),
               input_html: { type: 'number', class: 'form-control' }
-      
 
     .bg-white.border-0.text-end
-      = f.button :submit, t('.save_changes', default: 'Uložit změny'), class: "btn btn-primary"
+      = f.button :submit, t('shared.buttons.save_changes'), class: "btn btn-primary"

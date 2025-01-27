@@ -7,7 +7,7 @@
 
 - if params[:query].present?
   .alert.alert-info.mt-3
-    = t('.search_results', query: params[:query])
+    = t('shared.filter_form.search_results', query: params[:query])
 
 .row.g-3.mt-4
   .col-12
@@ -25,19 +25,18 @@
             .btn-group
               = link_to edit_project_path(project),
                       class: "btn btn-outline-secondary btn-sm",
-                      title: t('.edit'),
+                      title: t('shared.buttons.edit'),
                       data: { toggle: 'tooltip' } do
                 i.bi.bi-pencil
               = link_to project_path(project),
                       method: :delete,
-                      data: { confirm: t('.confirm_delete') },
+                      data: { confirm: t('shared.buttons.confirm_delete'), toggle: 'tooltip' },
                       class: "btn btn-outline-danger btn-sm",
-                      title: t('.delete'),
-                      data: { toggle: 'tooltip' } do
-                i.bi.bi-trash
+                      title: t('shared.buttons.delete')
+              i.bi.bi-trash
     - else
       .alert.alert-warning.mt-3
-        = t('.no_projects_found')
+        = t('shared.filter_form.no_found')
 
 .row.mt-4
   .col-12.text-end

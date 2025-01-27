@@ -1,9 +1,0 @@
-<h1><%= @project.title %></h1>
-<p>Pořadí: <%= @project.position %></p>
-
-<p>
-  <%= link_to "Zobrazit úkoly v tomto projektu", project_tasks_path(@project) %>
-</p>
-
-<%= link_to "Editovat", edit_project_path(@project) %> |
-<%= link_to "Zpět na seznam", projects_path %>

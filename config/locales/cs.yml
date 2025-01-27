@@ -5,16 +5,24 @@ cs:
       search_placeholder: "Název..."
       search_help: "Zadej klíčové slovo pro vyhledání."
       filter_button: "Filtrovat"
-
       status_title: "Stav úkolu"
       filter_all: "Vše"
       filter_done: "Hotové"
       filter_not_done: "Nehotové"
-
       tags_title: "Tagy"
-
+      no_found: "Žádný výsledek nenalezen"
+      search_results: "Výsledky heldaní"
     buttons:
       btn_back: "Zpět"
+      search_button: "Hledat"
+      search_title: "Hledání"
+      search_placeholder: "Název projektu..."
+      search_help: "Zadej klíčové slovo pro vyhledání projektu."
+      edit: "Editovat"
+      detail: "Detail"
+      delete: "Smazat"
+      confirm_delete: "Opravdu to chcete smazat?"
+      save_changes: "Uložit"
 
   layout:
     navbar:
@@ -30,53 +38,50 @@ cs:
   projects:
     index:
       my_projects: "Moje projekty"
-      search_title: "Hledání"
-      search_placeholder: "Název projektu..."
-      search_help: "Zadej klíčové slovo pro vyhledání projektu."
-      search_button: "Hledat"
       position: "Pořadí:"
       new_project: "Nový projekt"
-      edit: "Editovat"
-      detail: "Detail"
-      no_projects_found: "Žádný projekt nenalezen"
     form:
       basic_info: "Základní informace"
       title_label: "Název"
       title_placeholder: "Zadejte název projektu"
       position_label: "Pořadí"
       position_placeholder: "Zadejte pořadí"
-      save_changes: "Uložit změny"
     new:
       new_project: "Nový projekt"
     edit:
       edit_project: "Upravit projekt"
 
+  tags:
+    index:
+      my_tags: "Moje tagy"
+      new_tag: "Nový tag"
+    edit:
+      edit_tag: "Upravit tag"
+    new:
+      new_tag: "Nový tag"
+    form:
+      basic_info: "Základní informace"
+      title_label: "Název"
+      title_placeholder: "Zadejte název tagu"
 
   tasks:
     show:
       hero_title: "Detaily úkolu"
       hero_subtitle: "Zde najdeš všechny informace o zvoleném úkolu"
-
       project: "Projekt:"
       status: "Stav:"
       done: "Hotový"
       not_done: "Nehotový"
-
       link_toggle_not_done: "[Označit jako nehotový]"
       link_toggle_done: "[Označit jako hotový]"
-
       description: "Popis:"
       no_description: "Nejsou zadány další informace k úkolu."
-
       tags: "Tagy:"
       attachment: "Příloha:"
-
       link_edit: "Upravit"
       link_delete: "Smazat"
       link_delete_confirm: "Opravdu chcete smazat tento úkol?"
-
       link_back_to_list: "Zpět na seznam úkolů"
-
     index:
       tasks_in_project: "Úkoly v projektu: %{project}"
       all_tasks: "Všechny úkoly"
@@ -101,7 +106,6 @@ cs:
       edit_task: "Upravit úkol"
     new:
       new_task: "Nový úkol"
-
     form:
       basic_info: "Základní informace"
       title_label: "Název úkolu"
@@ -121,6 +125,7 @@ cs:
       attachment_help: "Můžeš nahrát soubor (obrázek, dokument) k tomuto úkolu."
       attachment_label: "Příloha"
       save_changes: "Uložit změny"
+
   time:
     formats:
       short: "%d.%m.%Y %H:%M"

@@ -1,7 +1,8 @@
-# app/controllers/projects_controller.rb
+# frozen_string_literal: true
+
 class ProjectsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_project, only: %i[show edit update destroy]
+  before_action :set_project, only: %i[edit update destroy]
 
   def index
     @pagy, @projects = pagy(
@@ -11,11 +12,11 @@ class ProjectsController < ApplicationController
     )
   end
 
-  def show
-  end
-
   def new
     @project = current_user.projects.new
+  end
+
+  def edit
   end
 
   def create
@@ -25,9 +26,6 @@ class ProjectsController < ApplicationController
     else
       render :new
     end
-  end
-
-  def edit
   end
 
   def update
@@ -50,6 +48,6 @@ class ProjectsController < ApplicationController
   end
 
   def project_params
-    params.require(:project).permit(:title, :position)
+    params.expect(project: [:title, :position])
   end
 end

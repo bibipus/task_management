@@ -3,7 +3,11 @@ class TagsController < ApplicationController
   before_action :set_tag, only: %i[show edit update destroy]
 
   def index
-    @tags = current_user.tags.order(:title)
+    @pagy, @tags = pagy(
+      current_user.tags
+                  .search_by_title(params[:q])
+                  .order(:title)
+    )
   end
 
   def show
@@ -16,7 +20,7 @@ class TagsController < ApplicationController
   def create
     @tag = current_user.tags.new(tag_params)
     if @tag.save
-      redirect_to @tag, notice: t('flash.tags.created')
+      redirect_to tags_path, notice: t('flash.tags.created')
     else
       render :new
     end
@@ -27,7 +31,7 @@ class TagsController < ApplicationController
 
   def update
     if @tag.update(tag_params)
-      redirect_to @tag, notice: t('flash.tags.updated')
+      redirect_to tags_path, notice: t('flash.tags.updated')
     else
       render :edit
     end

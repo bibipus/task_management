@@ -7,4 +7,8 @@ class Tag < ApplicationRecord
   has_many :tasks, through: :task_taggings
 
   validates :title, presence: true
+
+  scope :search_by_title, lambda { |query|
+    where('title ILIKE ?', "%#{query}%") if query.present?
+  }
 end
