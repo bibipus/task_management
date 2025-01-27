@@ -1,9 +1,14 @@
+# app/controllers/projects_controller.rb
 class ProjectsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_project, only: %i[show edit update destroy]
 
   def index
-    @projects = current_user.projects.order(:position)
+    @pagy, @projects = pagy(
+      current_user.projects
+                  .search_by_title(params[:q])
+                  .order(:position)
+    )
   end
 
   def show

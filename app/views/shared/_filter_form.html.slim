@@ -1,0 +1,43 @@
+= form_with url: request.path, method: :get, local: true do
+  .card.mb-4
+    .card-body
+      / -- Hledání nahoře
+      .mb-3
+        = text_field_tag :q,
+                params[:q],
+                class: "form-control",
+                placeholder: t('.search_placeholder')
+        p.small.text-muted.mt-1= t('.search_help')
+
+      / -- Tagy a Stav úkolu pod hledáním
+      .row.g-3
+
+        / -- Tagy
+        - if show_tag_filter
+          .col-md-6
+            h6.mb-2= t('.tags_title')
+            .tag-scroll
+              - current_user.tags.each do |tag|
+                .form-check
+                  = check_box_tag 'tag_ids[]',
+                          tag.id,
+                          params[:tag_ids]&.include?(tag.id.to_s),
+                          class: 'form-check-input',
+                          id: "tag_#{tag.id}"
+                  = label_tag "tag_#{tag.id}", tag.title, class: "form-check-label ms-1"
+
+        / -- Stav úkolu
+        - if show_status_filter
+          .col-md-6
+            h6.mb-2= t('.status_title')
+            .btn-group.w-100 role="group"
+              = radio_button_tag :filter, nil, (params[:filter].blank? || params[:filter] == ""), id: 'filter_all', class: "btn-check"
+              = label_tag 'filter_all', t('.filter_all'), class: "btn btn-outline-secondary"
+              = radio_button_tag :filter, 'done', (params[:filter] == 'done'), id: 'filter_done', class: "btn-check"
+              = label_tag 'filter_done', t('.filter_done'), class: "btn btn-outline-success"
+              = radio_button_tag :filter, 'not_done', (params[:filter] == 'not_done'), id: 'filter_not_done', class: "btn-check"
+              = label_tag 'filter_not_done', t('.filter_not_done'), class: "btn btn-outline-danger"
+
+      / -- Tlačítko odeslat
+      .text-end.mt-3
+        = submit_tag t('.filter_button'), class: "btn btn-primary"

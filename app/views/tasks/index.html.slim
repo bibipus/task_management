@@ -6,49 +6,8 @@
       - else
         h1= t('.all_tasks')
 
-= form_with url: request.path, method: :get, local: true do
-  .row.g-3
-    .col-md-4
-      .card.h-100
-        .card-body.d-flex.flex-column
-          h4.mb-3= t('.search_title')
-          = text_field_tag :q,
-                  params[:q],
-                  class: "form-control mb-2",
-                  placeholder: t('.search_placeholder')
-          p.small.text-muted= t('.search_help')
+= render 'shared/filter_form', show_search: true, show_status_filter: true, show_tag_filter: true
 
-    .col-md-4
-      .card.h-100
-        .card-body.d-flex.flex-column
-          h4.mb-3= t('.status_title')
-          .mb-2
-            = radio_button_tag :filter, nil, (params[:filter].blank? || params[:filter] == ""), id: 'filter_all'
-            = label_tag 'filter_all', t('.filter_all'), class: "ms-1"
-          .mb-2
-            = radio_button_tag :filter, 'done', (params[:filter] == 'done'), id: 'filter_done'
-            = label_tag 'filter_done', t('.filter_done'), class: "ms-1"
-          .mb-2
-            = radio_button_tag :filter, 'not_done', (params[:filter] == 'not_done'), id: 'filter_not_done'
-            = label_tag 'filter_not_done', t('.filter_not_done'), class: "ms-1"
-
-    .col-md-4
-      .card.h-100
-        .card-body.d-flex.flex-column
-          h4.mb-3= t('.tags_title')
-          .tag-scroll.flex-grow-1
-            - current_user.tags.each do |tag|
-              .form-check.mb-1
-                = check_box_tag 'tag_ids[]',
-                        tag.id,
-                        params[:tag_ids]&.include?(tag.id.to_s),
-                        class: 'form-check-input',
-                        id: "tag_#{tag.id}"
-                = label_tag "tag_#{tag.id}", tag.title, class: 'form-check-label ms-1'
-
-  .row.mt-3
-    .col-12
-      = submit_tag t('.filter_button'), class: "btn btn-primary"
 
 .row.g-3.mt-4
   - @tasks.each do |task|

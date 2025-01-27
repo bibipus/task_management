@@ -1,4 +1,21 @@
 cs:
+  shared:
+    filter_form:
+      search_title: "Hledání"
+      search_placeholder: "Název..."
+      search_help: "Zadej klíčové slovo pro vyhledání."
+      filter_button: "Filtrovat"
+
+      status_title: "Stav úkolu"
+      filter_all: "Vše"
+      filter_done: "Hotové"
+      filter_not_done: "Nehotové"
+
+      tags_title: "Tagy"
+
+    buttons:
+      btn_back: "Zpět"
+
   layout:
     navbar:
       brand: "TaskManager"
@@ -9,6 +26,31 @@ cs:
       logout: "Odhlásit se"
       login: "Přihlásit se"
       register: "Registrace"
+
+  projects:
+    index:
+      my_projects: "Moje projekty"
+      search_title: "Hledání"
+      search_placeholder: "Název projektu..."
+      search_help: "Zadej klíčové slovo pro vyhledání projektu."
+      search_button: "Hledat"
+      position: "Pořadí:"
+      new_project: "Nový projekt"
+      edit: "Editovat"
+      detail: "Detail"
+      no_projects_found: "Žádný projekt nenalezen"
+    form:
+      basic_info: "Základní informace"
+      title_label: "Název"
+      title_placeholder: "Zadejte název projektu"
+      position_label: "Pořadí"
+      position_placeholder: "Zadejte pořadí"
+      save_changes: "Uložit změny"
+    new:
+      new_project: "Nový projekt"
+    edit:
+      edit_project: "Upravit projekt"
+
 
   tasks:
     show:
@@ -38,29 +80,27 @@ cs:
     index:
       tasks_in_project: "Úkoly v projektu: %{project}"
       all_tasks: "Všechny úkoly"
-
       search_title: "Hledání"
       search_placeholder: "Název úkolu..."
       search_help: "Zadej klíčové slovo pro vyhledání úkolu."
-
       status_title: "Stav úkolu"
       filter_all: "Vše"
       filter_done: "Hotové"
       filter_not_done: "Nehotové"
-
       tags_title: "Tagy"
-
       filter_button: "Filtrovat"
-
       status: "Stav:"
       done: "Hotový"
       not_done: "Nehotový"
       tags: "Tagy:"
-
       mark_as_done: "Označit jako hotový"
       mark_as_not_done: "Označit jako nehotový"
       detail: "Detail"
       edit: "Editovat"
+    edit:
+      edit_task: "Upravit úkol"
+    new:
+      new_task: "Nový úkol"
 
     form:
       basic_info: "Základní informace"
@@ -68,23 +108,18 @@ cs:
       title_placeholder: "Např. Nakoupit potraviny"
       description_label: "Popis úkolu"
       description_placeholder: "Stručný popis, co je potřeba udělat"
-
       is_done_section: "Stav úkolu"
       is_done_help: "Pomocí tohoto přepínače označ, zda je úkol dokončen."
       is_done_label: "Hotový"
-
       tags_section: "Tagy"
       tags_help: "Vyber jeden či více tagů pro tento úkol:"
-
       project_section: "Projekt"
       project_help: "Přiřaď úkol k projektu (pokud chceš)."
       project_label: "Projekt"
       project_blank: "Bez projektu"
-
       attachment_section: "Příloha"
       attachment_help: "Můžeš nahrát soubor (obrázek, dokument) k tomuto úkolu."
       attachment_label: "Příloha"
-
       save_changes: "Uložit změny"
   time:
     formats:

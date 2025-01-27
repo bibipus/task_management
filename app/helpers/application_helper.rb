@@ -1,5 +1,6 @@
 module ApplicationHelper
   include Pagy::Frontend
+
   def highlight_term(text, term)
     return text if term.blank?
 

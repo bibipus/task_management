@@ -22,9 +22,6 @@ class TasksController < ApplicationController
     @pagy, @tasks = pagy(tasks)
   end
 
-
-
-
   def show
   end
 

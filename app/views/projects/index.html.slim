@@ -1,0 +1,48 @@
+.row
+  .col-12
+    .hero
+      h1= t('.my_projects')
+
+= render 'shared/filter_form', show_search: true, show_status_filter: false, show_tag_filter: false
+
+- if params[:query].present?
+  .alert.alert-info.mt-3
+    = t('.search_results', query: params[:query])
+
+.row.g-3.mt-4
+  .col-12
+    - if @projects.any?
+      ul.list-group
+        - @projects.each do |project|
+          li.list-group-item.d-flex.justify-content-between.align-items-center
+            .d-flex.flex-column
+              h5.mb-1
+                = link_to project_tasks_path(project), class: "text-decoration-none fw-bold" do
+                  = params[:q].present? ? highlight(project.title, params[:q]) : project.title
+
+              small.text-muted= t('.position') + ": #{project.position}"
+
+            .btn-group
+              = link_to edit_project_path(project),
+                      class: "btn btn-outline-secondary btn-sm",
+                      title: t('.edit'),
+                      data: { toggle: 'tooltip' } do
+                i.bi.bi-pencil
+              = link_to project_path(project),
+                      method: :delete,
+                      data: { confirm: t('.confirm_delete') },
+                      class: "btn btn-outline-danger btn-sm",
+                      title: t('.delete'),
+                      data: { toggle: 'tooltip' } do
+                i.bi.bi-trash
+    - else
+      .alert.alert-warning.mt-3
+        = t('.no_projects_found')
+
+.row.mt-4
+  .col-12.text-end
+    = link_to t('.new_project'), new_project_path, class: "btn btn-success"
+
+.mt-4
+  - if @pagy
+    == pagy_bootstrap_nav(@pagy)
