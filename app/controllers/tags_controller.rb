@@ -22,7 +22,7 @@ class TagsController < ApplicationController
     if @tag.save
       redirect_to tags_path, notice: t('flash.tags.created')
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -33,7 +33,7 @@ class TagsController < ApplicationController
     if @tag.update(tag_params)
       redirect_to tags_path, notice: t('flash.tags.updated')
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 

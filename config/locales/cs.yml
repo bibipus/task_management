@@ -1,4 +1,24 @@
 cs:
+  activerecord:
+    attributes:
+      project:
+        title: "Název"
+        position: "Pořadí"
+      tag:
+        title: "Název"
+      task:
+        title: "Název"
+        description: "Popis"
+    errors:
+      format: "%{attribute} %{message}"
+      messages:
+        blank: "nesmí být prázdný"
+        invalid: "je neplatný"
+
+  time:
+    formats:
+      short: "%d.%m.%Y %H:%M"
+
   shared:
     filter_form:
       search_title: "Hledání"
@@ -108,24 +128,20 @@ cs:
       new_task: "Nový úkol"
     form:
       basic_info: "Základní informace"
-      title_label: "Název úkolu"
-      title_placeholder: "Např. Nakoupit potraviny"
-      description_label: "Popis úkolu"
-      description_placeholder: "Stručný popis, co je potřeba udělat"
-      is_done_section: "Stav úkolu"
-      is_done_help: "Pomocí tohoto přepínače označ, zda je úkol dokončen."
+      title_label: "Název"
+      title_placeholder: "Zadejte název úkolu"
+      description_label: "Popis"
+      description_placeholder: "Stručný popis"
+      is_done_section: "Stav"
+      is_done_help: "Pomocí tohoto přepínače označíte, zda je úkol dokončen."
       is_done_label: "Hotový"
       tags_section: "Tagy"
-      tags_help: "Vyber jeden či více tagů pro tento úkol:"
+      tags_help: "Vyberte jeden či více tagů pro tento úkol:"
       project_section: "Projekt"
-      project_help: "Přiřaď úkol k projektu (pokud chceš)."
+      project_help: "Přiřaďte úkol k projektu."
       project_label: "Projekt"
       project_blank: "Bez projektu"
       attachment_section: "Příloha"
-      attachment_help: "Můžeš nahrát soubor (obrázek, dokument) k tomuto úkolu."
+      attachment_help: "Nahrát soubor (obrázek, dokument) k tomuto úkolu."
       attachment_label: "Příloha"
       save_changes: "Uložit změny"
-
-  time:
-    formats:
-      short: "%d.%m.%Y %H:%M"
