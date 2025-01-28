@@ -41,6 +41,12 @@ class ProjectsController < ApplicationController
     redirect_to projects_path, notice: t('flash.projects.destroyed')
   end
 
+  def sort
+    Rails.logger.debug "Order param: #{params[:order].inspect}"
+    Project.update_positions(params[:order])
+    render json: { success: true }
+  end
+
   private
 
   def set_project

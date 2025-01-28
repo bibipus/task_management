@@ -9,6 +9,9 @@ Rails.application.routes.draw do
 
   resources :projects do
     resources :tasks, only: [:index]
+    collection do
+      patch :sort
+    end
   end
   resources :tasks do
     member do

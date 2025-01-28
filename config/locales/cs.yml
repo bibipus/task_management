@@ -14,6 +14,9 @@ cs:
       messages:
         blank: "nesmí být prázdný"
         invalid: "je neplatný"
+        taken: "už je zabrané"
+        uniqueness: "musí být jedinečný pro každého uživatele"
+
 
   time:
     formats:

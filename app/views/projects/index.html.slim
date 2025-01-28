@@ -12,31 +12,31 @@
 .row.g-3.mt-4
   .col-12
     - if @projects.any?
-      ul.list-group
+      ul#sortable-projects.list-group
         - @projects.each do |project|
-          li.list-group-item.d-flex.justify-content-between.align-items-center
+          li.list-group-item.d-flex.justify-content-between.align-items-center(data-id=project.id)
             .d-flex.flex-column
               h5.mb-1
                 = link_to project_tasks_path(project), class: "text-decoration-none fw-bold" do
                   = params[:q].present? ? highlight(project.title, params[:q]) : project.title
 
-              small.text-muted= t('.position') + ": #{project.position}"
               small.mt-1
                 = t('.tasks_count', count: project.tasks.size) if project.tasks.any?
 
-            .btn-group
-              = link_to edit_project_path(project),
-                      class: "btn btn-outline-secondary btn-sm",
-                      title: t('shared.buttons.edit'),
-                      data: { toggle: 'tooltip' } do
-                i.bi.bi-pencil
-              = link_to project_path(project),
-                      method: :delete,
-                      data: { turbo_method: :delete, turbo_confirm: t('.confirm_delete', tasks_count: project.tasks.size) },
-                      class: "btn btn-outline-danger btn-sm",
-                      title: t('shared.buttons.delete') do
-                i.bi.bi-trash
-
+            .d-flex.align-items-center
+              i.bi.bi-grip-vertical.drag-handle.me-2
+              .btn-group
+                = link_to edit_project_path(project),
+                        class: "btn btn-outline-secondary btn-sm",
+                        title: t('shared.buttons.edit'),
+                        data: { toggle: 'tooltip' } do
+                  i.bi.bi-pencil
+                = link_to project_path(project),
+                        method: :delete,
+                        data: { turbo_method: :delete, turbo_confirm: t('.confirm_delete', tasks_count: project.tasks.size) },
+                        class: "btn btn-outline-danger btn-sm",
+                        title: t('shared.buttons.delete') do
+                  i.bi.bi-trash
     - else
       .alert.alert-warning.mt-3
         = t('shared.filter_form.no_found')

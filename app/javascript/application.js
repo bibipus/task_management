@@ -6,3 +6,4 @@ import "popper"
 import "bootstrap"
 
 import './flash_messages';
+import "./projects_sort";

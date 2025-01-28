@@ -2,13 +2,10 @@
 
 class Tag < ApplicationRecord
   belongs_to :user
-
   has_many :task_taggings, dependent: :destroy
   has_many :tasks, through: :task_taggings
 
   validates :title, presence: true
 
-  scope :search_by_title, lambda { |query|
-    where('title ILIKE ?', "%#{query}%") if query.present?
-  }
+  scope :search_by_title, ->(query) { where('title ILIKE ?', "%#{sanitize_sql_like(query)}%") if query.present? }
 end
