@@ -54,6 +54,22 @@ cs:
       logout: "Odhlásit se"
       login: "Přihlásit se"
       register: "Registrace"
+  flash:
+    projects:
+      created: "Projekt byl úspěšně vytvořen"
+      updated: "Projekt byl úspěšně aktualizován"
+      destroyed: "Projekt byl úspěšně smazán"
+      creation_failed: "Vytvoření projektu se nezdařilo. Zkontrolujte chyby"
+    tasks:
+      created: "Úkol byl úspěšně vytvořen"
+      updated: "Úkol byl úspěšně aktualizován"
+      destroyed: "Úkol byl úspěšně smazán"
+      creation_failed: "Vytvoření úkolu se nezdařilo. Zkontrolujte chyby"
+    tags:
+      created: "Tag byl úspěšně vytvořen"
+      updated: "Tag byl úspěšně aktualizován"
+      destroyed: "Tag byl úspěšně smazán"
+      creation_failed: "Vytvoření tagu se nezdařilo. Zkontrolujte chyby"
 
   projects:
     index:

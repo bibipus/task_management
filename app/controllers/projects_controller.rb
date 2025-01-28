@@ -22,9 +22,9 @@ class ProjectsController < ApplicationController
   def create
     @project = current_user.projects.new(project_params)
     if @project.save
-      redirect_to @project, notice: t('flash.projects.created')
+      redirect_to projects_path, notice: t('flash.projects.created')
     else
-      render :new, status: :unprocessable_entity
+      render :new, status: :unprocessable_entity, alert: t('flash.projects.created')
     end
   end
 

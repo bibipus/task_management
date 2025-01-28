@@ -4,3 +4,5 @@ import "controllers"
 
 import "popper"
 import "bootstrap"
+
+import './flash_messages';
