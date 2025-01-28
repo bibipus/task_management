@@ -21,6 +21,8 @@
                   = params[:q].present? ? highlight(project.title, params[:q]) : project.title
 
               small.text-muted= t('.position') + ": #{project.position}"
+              small.mt-1
+                = t('.tasks_count', count: project.tasks.size) if project.tasks.any?
 
             .btn-group
               = link_to edit_project_path(project),
@@ -30,10 +32,11 @@
                 i.bi.bi-pencil
               = link_to project_path(project),
                       method: :delete,
-                      data: { confirm: t('shared.buttons.confirm_delete'), toggle: 'tooltip' },
+                      data: { turbo_method: :delete, turbo_confirm: t('.confirm_delete', tasks_count: project.tasks.size) },
                       class: "btn btn-outline-danger btn-sm",
-                      title: t('shared.buttons.delete')
-              i.bi.bi-trash
+                      title: t('shared.buttons.delete') do
+                i.bi.bi-trash
+
     - else
       .alert.alert-warning.mt-3
         = t('shared.filter_form.no_found')

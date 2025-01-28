@@ -76,6 +76,9 @@ cs:
       my_projects: "Moje projekty"
       position: "Pořadí:"
       new_project: "Nový projekt"
+      tasks_count: "Úkoly k tomuto projektu: %{count}"
+      confirm_delete: "Opravdu chcete smazat tento projekt? S tímto projektem bude smazáno %{tasks_count} úkolů."
+
     form:
       basic_info: "Základní informace"
       title_label: "Název"

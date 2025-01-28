@@ -28,10 +28,9 @@
                 i.bi.bi-pencil
               = link_to tag_path(tag),
                       method: :delete,
-                      data: { confirm: t('shared.buttons.confirm_delete') },
+                      data: { turbo_method: :delete, turbo_confirm: t('shared.buttons.confirm_delete') },
                       class: "btn btn-outline-danger btn-sm",
-                      title: t('shared.buttons.delete'),
-                      data: { toggle: 'tooltip' } do
+                      title: t('shared.buttons.delete') do
                 i.bi.bi-trash
     - else
       .alert.alert-warning.mt-3

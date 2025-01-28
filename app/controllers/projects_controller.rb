@@ -48,6 +48,6 @@ class ProjectsController < ApplicationController
   end
 
   def project_params
-    params.expect(project: [:title, :position])
+    params.require(:project).permit(:title, :position)
   end
 end
