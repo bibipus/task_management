@@ -19,7 +19,8 @@ nav.navbar.navbar-expand-lg.navbar-custom.fixed-top
           li.nav-item
             .nav-link
               | #{t('layout.navbar.logged_in')}:
-              b= current_user.email
+              b
+                = link_to current_user.email, edit_user_registration_path, class: "text-decoration-none"
 
           li.nav-item
             = link_to t('layout.navbar.logout'),

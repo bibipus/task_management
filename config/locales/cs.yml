@@ -167,3 +167,20 @@ cs:
       attachment_help: "Nahrát soubor (obrázek, dokument) k tomuto úkolu."
       attachment_label: "Příloha"
       save_changes: "Uložit změny"
+
+  devise:
+    registrations:
+      edit:
+        edit_account: "Upravit nastavení"
+        email: "E-mail"
+        first_name: "Jméno"
+        last_name: "Příjmení"
+        password: "Heslo"
+        password_confirmation: "Potvrzení hesla"
+        current_password: "Současné heslo"
+        update: "Uložit změny"
+        optional: "volitelné"
+        danger_zone: "Nebezpečná zóna"
+        cancel_account: "Zrušit účet"
+        cancel_account_description: "Tímto smažete svůj účet a všechna data budou nenávratně ztracena."
+        confirm_cancel: "Opravdu chcete zrušit svůj účet?"
