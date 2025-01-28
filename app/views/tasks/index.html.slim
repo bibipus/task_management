@@ -8,38 +8,58 @@
 
 = render 'shared/filter_form', show_search: true, show_status_filter: true, show_tag_filter: true
 
+.row.mt-4
+  .col-12.text-end
+    = link_to t('tasks.new.new_task'), new_task_path, class: "btn btn-primary"
 
 .row.g-3.mt-4
-  - @tasks.each do |task|
-    .col-md-6
-      .card.h-100
-        .card-body
-          h5.card-title
-            - if params[:q].present?
-              = highlight_term(task.title, params[:q])
-            - else
-              = task.title
+  - if @tasks.any?
+    - @tasks.each do |task|
+      .col-md-6
+        .card.h-100
+          .card-body
+            .d-flex.justify-content-between.align-items-start.mb-3
+              h5.card-title.mb-0.flex-grow-1
+                - if params[:q].present?
+                  = link_to highlight_term(task.title, params[:q]), task_path(task), class: "text-decoration-none"
+                - else
+                  = link_to task.title, task_path(task), class: "text-decoration-none"
 
-          p.card-text
-            b= t('.status')
-            |
-            = task.is_done ? t('.done') : t('.not_done')
+              - if task.is_done
+                span.badge.bg-success= t('.done')
+              - else
+                span.badge.bg-warning= t('.not_done')
 
-          - if task.tags.any?
-            p.card-text
-              b= t('.tags')
-              - task.tags.each do |t|
-                span.badge.bg-info.mx-1= t.title
+            p.card-text.mb-2
+            - if task.tags.any?
+              p.card-text
+                b= t('.tags')
+                - task.tags.each do |t|
+                  span.badge.bg-info.mx-1= t.title
 
-        .card-footer.bg-white.border-0
-          = link_to (task.is_done ? t('.mark_as_not_done') : t('.mark_as_done')),
-                  toggle_done_task_path(task),
-                  method: :patch,
-                  data: { turbo_method: :patch },
-                  class: "btn btn-sm btn-outline-success me-2"
+          .card-footer.bg-white.border-0.d-flex.justify-content-between.align-items-center
+            .btn-group
+              = link_to toggle_done_task_path(task),
+                      method: :patch,
+                      data: { turbo_method: :patch },
+                      class: "btn btn-outline-success btn-sm",
+                      title: task.is_done ? t('.mark_as_not_done') : t('.mark_as_done') do
+                i.bi.bi-check-circle
 
-          = link_to t('.detail'), task_path(task), class: "btn btn-sm btn-primary"
-          = link_to t('.edit'), edit_task_path(task), class: "btn btn-sm btn-secondary ms-2"
+              = link_to edit_task_path(task),
+                      class: "btn btn-outline-secondary btn-sm",
+                      title: t('.edit') do
+                i.bi.bi-pencil
+
+              = link_to task_path(task),
+                      method: :delete,
+                      data: { turbo_method: :delete, turbo_confirm: t('shared.buttons.confirm_delete') },
+                      class: "btn btn-outline-danger btn-sm",
+                      title: t('shared.buttons.delete') do
+                i.bi.bi-trash
+  - else
+    .alert.alert-warning.mt-3
+      = t('shared.filter_form.no_found')
 
 .mt-4
   - if @pagy

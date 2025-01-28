@@ -9,6 +9,10 @@
   .alert.alert-info.mt-3
     = t('shared.filter_form.search_results', query: params[:query])
 
+.row.mt-4
+  .col-12.text-end
+    = link_to t('tasks.new.new_task'), new_task_path, class: "btn btn-primary"
+
 .row.g-3.mt-4
   .col-12
     - if @tags.any?
@@ -35,10 +39,6 @@
     - else
       .alert.alert-warning.mt-3
         = t('shared.filter_form.no_found')
-
-.row.mt-4
-  .col-12.text-end
-    = link_to t('.new_tag'), new_tag_path, class: "btn btn-success"
 
 .mt-4
   - if @pagy

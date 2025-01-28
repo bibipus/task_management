@@ -2,7 +2,6 @@
   .col-12
     .hero
       h1 = t('.hero_title')
-      p = t('.hero_subtitle')
 
 .row.justify-content-center.mt-4
   .col-md-12
@@ -14,8 +13,8 @@
 
         - if @task.project
           p
-            b= t('.project')
-            = link_to @task.project.title, project_path(@task.project), class: "ms-1"
+            b = t('.project')
+            = @task.project.title
 
         p
           b= t('.status')

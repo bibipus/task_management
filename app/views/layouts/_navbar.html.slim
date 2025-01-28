@@ -17,15 +17,11 @@ nav.navbar.navbar-expand-lg.navbar-custom.fixed-top
       ul.navbar-nav.ms-auto
         - if user_signed_in?
           li.nav-item
-            .nav-link
-              | #{t('layout.navbar.logged_in')}:
-              b
-                = link_to current_user.email, edit_user_registration_path, class: "text-decoration-none"
-
+            = link_to t('layout.navbar.settings'), edit_user_registration_path, class: "nav-link"
           li.nav-item
             = link_to t('layout.navbar.logout'),
                     destroy_user_session_path,
-                    method: :delete,
+                    data: { turbo_method: :delete },
                     class: "nav-link"
         - else
           li.nav-item

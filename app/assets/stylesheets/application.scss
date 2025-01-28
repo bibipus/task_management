@@ -46,6 +46,14 @@ body {
     font-size: 1.2rem;
 }
 
+.text-decoration-none {
+    text-decoration: none;
+    color: black;
+
+    &:hover {
+        color: $accent-color !important;
+    }
+}
 
 
 @import "components/flash_message";

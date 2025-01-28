@@ -57,6 +57,7 @@ cs:
       logout: "Odhlásit se"
       login: "Přihlásit se"
       register: "Registrace"
+      settings: "Nastavení"
   flash:
     projects:
       created: "Projekt byl úspěšně vytvořen"
@@ -110,7 +111,7 @@ cs:
     show:
       hero_title: "Detaily úkolu"
       hero_subtitle: "Zde najdeš všechny informace o zvoleném úkolu"
-      project: "Projekt:"
+      project: "Projekt: "
       status: "Stav:"
       done: "Hotový"
       not_done: "Nehotový"
@@ -184,3 +185,20 @@ cs:
         cancel_account: "Zrušit účet"
         cancel_account_description: "Tímto smažete svůj účet a všechna data budou nenávratně ztracena."
         confirm_cancel: "Opravdu chcete zrušit svůj účet?"
+      new:
+        register_hero: "Registrovat se"
+        email: "E-mail"
+        first_name: "Jméno"
+        last_name: "Příjmení"
+        password: "Heslo"
+        password_confirmation: "Potvrzení hesla"
+        register: "Registrovat"
+    sessions:
+      new:
+        login_hero: "Přihlásit se"
+        email: "E-mail"
+        first_name: "Jméno"
+        last_name: "Příjmení"
+        password: "Heslo"
+        password_confirmation: "Potvrzení hesla"
+        login: "Přihlásit"
