@@ -6,16 +6,16 @@ nav.navbar.navbar-expand-lg.navbar-custom.fixed-top
       span.navbar-toggler-icon
 
     .collapse.navbar-collapse#navbarNav
-      ul.navbar-nav.me-auto
-        li.nav-item
-          = link_to t('layout.navbar.projects'), projects_path, class: "nav-link"
-        li.nav-item
-          = link_to t('layout.navbar.tasks'), tasks_path, class: "nav-link"
-        li.nav-item
-          = link_to t('layout.navbar.tags'), tags_path, class: "nav-link"
+      - if user_signed_in?
+        ul.navbar-nav.me-auto
+          li.nav-item
+            = link_to t('layout.navbar.projects'), projects_path, class: "nav-link"
+          li.nav-item
+            = link_to t('layout.navbar.tasks'), tasks_path, class: "nav-link"
+          li.nav-item
+            = link_to t('layout.navbar.tags'), tags_path, class: "nav-link"
 
-      ul.navbar-nav.ms-auto
-        - if user_signed_in?
+        ul.navbar-nav.ms-auto
           li.nav-item
             = link_to t('layout.navbar.settings'), edit_user_registration_path, class: "nav-link"
           li.nav-item
@@ -23,7 +23,8 @@ nav.navbar.navbar-expand-lg.navbar-custom.fixed-top
                     destroy_user_session_path,
                     data: { turbo_method: :delete },
                     class: "nav-link"
-        - else
+      - else
+        ul.navbar-nav.ms-auto
           li.nav-item
             = link_to t('layout.navbar.login'), new_user_session_path, class: "nav-link"
           li.nav-item
