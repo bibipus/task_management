@@ -66,6 +66,16 @@ group :development, :test do
 
 end
 
+group :development, :test do
+  gem 'rspec-rails', '~> 6.0'
+  gem 'factory_bot_rails'
+  gem 'faker'
+  gem 'shoulda-matchers'
+  gem 'database_cleaner-active_record'
+  gem 'simplecov', require: false
+  gem 'simplecov-cobertura', require: false
+end
+
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"

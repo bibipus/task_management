@@ -34,3 +34,12 @@
 /config/master.key
 
 /.idea
+
+# Ignore all YAML configuration files
+#/config/*.yml
+/config/config.yml
+/config/database.yml
+
+# Simplecov
+/coverage/public/packs
+coverage/

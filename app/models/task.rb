@@ -17,7 +17,7 @@ class Task < ApplicationRecord
   scope :not_done, -> { where(is_done: false) }
   scope :search_by_title, ->(q) { where('tasks.title ILIKE ?', "%#{sanitize_sql_like(q)}%") if q.present? }
   scope :with_tags, lambda { |tag_ids|
-    return if tag_ids.blank?
+    return Task.none if tag_ids.blank?
 
     joins(:task_taggings)
       .where(task_taggings: { tag_id: tag_ids })
