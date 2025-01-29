@@ -9,6 +9,7 @@ cs:
       task:
         title: "Název"
         description: "Popis"
+        attachment: "Soubor"
     errors:
       format: "%{attribute} %{message}"
       messages:
@@ -16,6 +17,8 @@ cs:
         invalid: "je neplatný"
         taken: "už je zabrané"
         uniqueness: "musí být jedinečný pro každého uživatele"
+        file_too_large: "je příliš velký. Maximální velikost je %{size}."
+        file_type_invalid: "má neplatý typ. Povolené typy: JPEG, PNG, GIF, WEBP, PDF, TXT, XLSX, MP4, MPEG, QuickTime."
 
 
   time:
@@ -69,6 +72,7 @@ cs:
       updated: "Úkol byl úspěšně aktualizován"
       destroyed: "Úkol byl úspěšně smazán"
       creation_failed: "Vytvoření úkolu se nezdařilo. Zkontrolujte chyby"
+      attachment_deleted: "Příloha byla úspěšně odstraněna."
     tags:
       created: "Tag byl úspěšně vytvořen"
       updated: "Tag byl úspěšně aktualizován"
@@ -109,7 +113,7 @@ cs:
 
   tasks:
     show:
-      hero_title: "Detaily úkolu"
+      hero_title: "Detail úkolu"
       hero_subtitle: "Zde najdeš všechny informace o zvoleném úkolu"
       project: "Projekt: "
       status: "Stav:"
@@ -168,6 +172,7 @@ cs:
       attachment_help: "Nahrát soubor (obrázek, dokument) k tomuto úkolu."
       attachment_label: "Příloha"
       save_changes: "Uložit změny"
+      current_attachment: "Současný soubor"
 
   devise:
     registrations:

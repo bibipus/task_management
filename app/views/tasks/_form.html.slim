@@ -50,10 +50,18 @@
 
     h5= t('.attachment_section')
     p.small.text-muted= t('.attachment_help')
+
+    - if @task.attachment.attached? && @task.attachment.persisted?
+      .attachment-preview.mb-3
+        p
+          strong= t('.current_attachment')
+          br
+          = link_to @task.attachment.filename, rails_blob_path(@task.attachment, disposition: "attachment"), class: "btn btn-outline-primary btn-sm"
+          = link_to t('shared.buttons.delete'), remove_attachment_task_path(@task), method: :delete, class: "btn btn-outline-danger btn-sm ms-2", data: { turbo_method: :delete, turbo_confirm: t('shared.buttons.confirm_delete') }
+
     = f.input :attachment,
             as: :file,
             label: t('.attachment_label')
 
     .bg-white.border-0
       = f.button :submit, t('.save_changes'), class: "btn btn-primary"
-

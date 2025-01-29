@@ -61,6 +61,12 @@ class TasksController < ApplicationController
     redirect_to tasks_path, notice: "Stav úkolu byl změněn."
   end
 
+  def remove_attachment
+    @task = current_user.tasks.find(params[:id])
+    @task.attachment.purge
+    redirect_to edit_task_path(@task), notice: t('flash.tasks.attachment_deleted')
+  end
+
   private
 
   def set_project

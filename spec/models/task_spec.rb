@@ -73,4 +73,51 @@ RSpec.describe Task, type: :model do
       end
     end
   end
+
+  describe 'attachment validation' do
+    let(:task) { build(:task) }
+
+    context 'size validation' do
+      it 'is valid when the attachment is under 1MB' do
+        file = fixture_file_upload(Rails.root.join('spec/fixtures/files/small_image.jpg'), 'image/jpeg')
+        task.attachment.attach(file)
+        task.valid?
+        expect(task.errors[:attachment]).to be_empty
+      end
+
+      it 'is invalid when the attachment is over 1MB' do
+        file = fixture_file_upload(Rails.root.join('spec/fixtures/files/large_image.jpg'), 'image/jpeg')
+        task.attachment.attach(file)
+        task.valid?
+
+        expect(task.errors[:attachment]).to include(I18n.t('activerecord.errors.messages.file_too_large', size: '1MB'))
+      end
+    end
+
+    context 'content type validation' do
+      let(:valid_types) do
+        %w[
+          image/jpeg image/png image/gif image/webp
+          application/pdf text/plain
+          application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+          video/mp4 video/mpeg video/quicktime
+        ]
+      end
+
+      it 'is valid when the attachment has an allowed type' do
+        valid_types.each do |mime_type|
+          file = fixture_file_upload(Rails.root.join('spec/fixtures/files/valid_file'), mime_type)
+          task.attachment.attach(file)
+          expect(task).to be_valid
+        end
+      end
+
+      it 'is invalid when the attachment has a disallowed type' do
+        file = fixture_file_upload(Rails.root.join('spec/fixtures/files/malicious_script.exe'), 'application/x-msdownload')
+        task.attachment.attach(file)
+        task.valid?
+        expect(task.errors[:attachment]).to include(I18n.t('activerecord.errors.messages.file_type_invalid'))
+      end
+    end
+  end
 end

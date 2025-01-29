@@ -7,6 +7,7 @@ class ProjectsController < ApplicationController
   def index
     @pagy, @projects = pagy(
       current_user.projects
+                  .includes(:tasks)
                   .search_by_title(params[:q])
                   .order(:position)
     )

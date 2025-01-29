@@ -10,6 +10,7 @@ class Task < ApplicationRecord
   validates :title, presence: true
   validates :description, presence: true
   validates :is_done, inclusion: { in: [true, false] }
+  validate :validate_attachment
 
   has_one_attached :attachment
 
@@ -24,4 +25,24 @@ class Task < ApplicationRecord
       .group('tasks.id')
       .having('COUNT(task_taggings.tag_id) = ?', tag_ids.size)
   }
+
+  private
+
+  def validate_attachment
+    return unless attachment.attached? && attachment.blob.present?
+
+    if attachment.blob.byte_size > 1.megabyte
+      errors.add(:attachment, I18n.t('activerecord.errors.messages.file_too_large', size: '1MB'))
+    end
+
+    allowed_types = %w[
+      image/jpeg image/png image/gif image/webp
+      application/pdf text/plain
+      application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+      video/mp4 video/mpeg video/quicktime
+    ]
+    return if allowed_types.include?(attachment.blob.content_type)
+
+    errors.add(:attachment, I18n.t('activerecord.errors.messages.file_type_invalid'))
+  end
 end
