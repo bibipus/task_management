@@ -1,0 +1,209 @@
+cs:
+  activerecord:
+    attributes:
+      project:
+        title: "Název"
+        position: "Pořadí"
+      tag:
+        title: "Název"
+      task:
+        title: "Název"
+        description: "Popis"
+        attachment: "Soubor"
+    errors:
+      format: "%{attribute} %{message}"
+      messages:
+        blank: "nesmí být prázdný"
+        invalid: "je neplatný"
+        taken: "už je zabrané"
+        uniqueness: "musí být jedinečný pro každého uživatele"
+        file_too_large: "je příliš velký. Maximální velikost je %{size}."
+        file_type_invalid: "má neplatý typ. Povolené typy: JPEG, PNG, GIF, WEBP, PDF, TXT, XLSX, MP4, MPEG, QuickTime."
+
+
+  time:
+    formats:
+      short: "%d.%m.%Y %H:%M"
+
+  shared:
+    filter_form:
+      search_title: "Hledání"
+      search_placeholder: "Název..."
+      search_help: "Zadej klíčové slovo pro vyhledání."
+      filter_button: "Filtrovat"
+      status_title: "Stav úkolu"
+      filter_all: "Vše"
+      filter_done: "Hotové"
+      filter_not_done: "Nehotové"
+      tags_title: "Tagy"
+      no_found: "Žádný výsledek nenalezen"
+      search_results: "Výsledky heldaní"
+    buttons:
+      btn_back: "Zpět"
+      search_button: "Hledat"
+      search_title: "Hledání"
+      search_placeholder: "Název projektu..."
+      search_help: "Zadej klíčové slovo pro vyhledání projektu."
+      edit: "Editovat"
+      detail: "Detail"
+      delete: "Smazat"
+      confirm_delete: "Opravdu to chcete smazat?"
+      save_changes: "Uložit"
+
+  layout:
+    navbar:
+      brand: "TaskManager"
+      projects: "Projekty"
+      tasks: "Úkoly"
+      tags: "Tagy"
+      logged_in: "Přihlášen"
+      logout: "Odhlásit se"
+      login: "Přihlásit se"
+      register: "Registrace"
+      settings: "Nastavení"
+  flash:
+    projects:
+      created: "Projekt byl úspěšně vytvořen"
+      updated: "Projekt byl úspěšně aktualizován"
+      destroyed: "Projekt byl úspěšně smazán"
+      creation_failed: "Vytvoření projektu se nezdařilo. Zkontrolujte chyby"
+    tasks:
+      created: "Úkol byl úspěšně vytvořen"
+      updated: "Úkol byl úspěšně aktualizován"
+      destroyed: "Úkol byl úspěšně smazán"
+      creation_failed: "Vytvoření úkolu se nezdařilo. Zkontrolujte chyby"
+      attachment_deleted: "Příloha byla úspěšně odstraněna."
+    tags:
+      created: "Tag byl úspěšně vytvořen"
+      updated: "Tag byl úspěšně aktualizován"
+      destroyed: "Tag byl úspěšně smazán"
+      creation_failed: "Vytvoření tagu se nezdařilo. Zkontrolujte chyby"
+
+  projects:
+    index:
+      my_projects: "Moje projekty"
+      position: "Pořadí:"
+      new_project: "Nový projekt"
+      tasks_count: "Úkoly k tomuto projektu: %{count}"
+      confirm_delete: "Opravdu chcete smazat tento projekt? S tímto projektem bude smazáno %{tasks_count} úkolů."
+
+    form:
+      basic_info: "Základní informace"
+      title_label: "Název"
+      title_placeholder: "Zadejte název projektu"
+      position_label: "Pořadí"
+      position_placeholder: "Zadejte pořadí"
+    new:
+      new_project: "Nový projekt"
+    edit:
+      edit_project: "Upravit projekt"
+
+  tags:
+    index:
+      my_tags: "Moje tagy"
+      new_tag: "Nový tag"
+    edit:
+      edit_tag: "Upravit tag"
+    new:
+      new_tag: "Nový tag"
+    form:
+      basic_info: "Základní informace"
+      title_label: "Název"
+      title_placeholder: "Zadejte název tagu"
+
+  tasks:
+    show:
+      hero_title: "Detail úkolu"
+      hero_subtitle: "Zde najdeš všechny informace o zvoleném úkolu"
+      project: "Projekt: "
+      status: "Stav:"
+      done: "Hotový"
+      not_done: "Nehotový"
+      link_toggle_not_done: "[Označit jako nehotový]"
+      link_toggle_done: "[Označit jako hotový]"
+      description: "Popis:"
+      no_description: "Nejsou zadány další informace k úkolu."
+      tags: "Tagy:"
+      attachment: "Příloha:"
+      link_edit: "Upravit"
+      link_delete: "Smazat"
+      link_delete_confirm: "Opravdu chcete smazat tento úkol?"
+      link_back_to_list: "Zpět na seznam úkolů"
+    index:
+      tasks_in_project: "Úkoly v projektu: %{project}"
+      all_tasks: "Všechny úkoly"
+      search_title: "Hledání"
+      search_placeholder: "Název úkolu..."
+      search_help: "Zadej klíčové slovo pro vyhledání úkolu."
+      status_title: "Stav úkolu"
+      filter_all: "Vše"
+      filter_done: "Hotové"
+      filter_not_done: "Nehotové"
+      tags_title: "Tagy"
+      filter_button: "Filtrovat"
+      status: "Stav:"
+      done: "Hotový"
+      not_done: "Nehotový"
+      tags: "Tagy:"
+      mark_as_done: "Označit jako hotový"
+      mark_as_not_done: "Označit jako nehotový"
+      detail: "Detail"
+      edit: "Editovat"
+    edit:
+      edit_task: "Upravit úkol"
+    new:
+      new_task: "Nový úkol"
+    form:
+      basic_info: "Základní informace"
+      title_label: "Název"
+      title_placeholder: "Zadejte název úkolu"
+      description_label: "Popis"
+      description_placeholder: "Stručný popis"
+      is_done_section: "Stav"
+      is_done_help: "Pomocí tohoto přepínače označíte, zda je úkol dokončen."
+      is_done_label: "Hotový"
+      tags_section: "Tagy"
+      tags_help: "Vyberte jeden či více tagů pro tento úkol:"
+      project_section: "Projekt"
+      project_help: "Přiřaďte úkol k projektu."
+      project_label: "Projekt"
+      project_blank: "Bez projektu"
+      attachment_section: "Příloha"
+      attachment_help: "Nahrát soubor (obrázek, dokument) k tomuto úkolu."
+      attachment_label: "Příloha"
+      save_changes: "Uložit změny"
+      current_attachment: "Současný soubor"
+
+  devise:
+    registrations:
+      edit:
+        edit_account: "Upravit nastavení"
+        email: "E-mail"
+        first_name: "Jméno"
+        last_name: "Příjmení"
+        password: "Heslo"
+        password_confirmation: "Potvrzení hesla"
+        current_password: "Současné heslo"
+        update: "Uložit změny"
+        optional: "volitelné"
+        danger_zone: "Nebezpečná zóna"
+        cancel_account: "Zrušit účet"
+        cancel_account_description: "Tímto smažete svůj účet a všechna data budou nenávratně ztracena."
+        confirm_cancel: "Opravdu chcete zrušit svůj účet?"
+      new:
+        register_hero: "Registrovat se"
+        email: "E-mail"
+        first_name: "Jméno"
+        last_name: "Příjmení"
+        password: "Heslo"
+        password_confirmation: "Potvrzení hesla"
+        register: "Registrovat"
+    sessions:
+      new:
+        login_hero: "Přihlásit se"
+        email: "E-mail"
+        first_name: "Jméno"
+        last_name: "Příjmení"
+        password: "Heslo"
+        password_confirmation: "Potvrzení hesla"
+        login: "Přihlásit"

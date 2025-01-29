@@ -1,0 +1,8 @@
+.row
+  .col-12
+    .hero
+      h1 = t(".new_task")
+
+= render 'form', task: @task
+
+= link_to t("shared.buttons.btn_back"), tasks_path, class: "btn btn-outline-secondary mt-3"

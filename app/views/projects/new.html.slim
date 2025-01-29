@@ -1,0 +1,8 @@
+.row
+  .col-12
+    .hero
+      h1 = t(".new_project")
+
+= render 'form', project: @project
+
+= link_to t("shared.buttons.btn_back"), projects_path, class: "btn btn-outline-secondary mt-3"

@@ -1,0 +1,31 @@
+nav.navbar.navbar-expand-lg.navbar-custom.fixed-top
+  .container
+    = link_to t('layout.navbar.brand'), root_path, class: "navbar-brand"
+
+    button.navbar-toggler type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      span.navbar-toggler-icon
+
+    .collapse.navbar-collapse#navbarNav
+      - if user_signed_in?
+        ul.navbar-nav.me-auto
+          li.nav-item
+            = link_to t('layout.navbar.projects'), projects_path, class: "nav-link"
+          li.nav-item
+            = link_to t('layout.navbar.tasks'), tasks_path, class: "nav-link"
+          li.nav-item
+            = link_to t('layout.navbar.tags'), tags_path, class: "nav-link"
+
+        ul.navbar-nav.ms-auto
+          li.nav-item
+            = link_to t('layout.navbar.settings'), edit_user_registration_path, class: "nav-link"
+          li.nav-item
+            = link_to t('layout.navbar.logout'),
+                    destroy_user_session_path,
+                    data: { turbo_method: :delete },
+                    class: "nav-link"
+      - else
+        ul.navbar-nav.ms-auto
+          li.nav-item
+            = link_to t('layout.navbar.login'), new_user_session_path, class: "nav-link"
+          li.nav-item
+            = link_to t('layout.navbar.register'), new_user_registration_path, class: "nav-link"

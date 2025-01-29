@@ -1,0 +1,18 @@
+= simple_form_for(@project, local: true) do |f|
+  .card.mt-4.card-body
+    h5= t('.basic_info')
+
+    .row.g-3
+      .col-md-12
+        = f.input :title,
+                label: t('.title_label'),
+                placeholder: t('.title_placeholder'),
+                input_html: { class: 'form-control' }
+
+      = f.input :position,
+              label: t('.position_label'),
+              placeholder: t('.position_placeholder'),
+              input_html: { type: 'number', class: 'form-control' }
+
+    .bg-white.border-0.text-end
+      = f.button :submit, t('shared.buttons.save_changes'), class: "btn btn-primary"

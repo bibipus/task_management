@@ -1,0 +1,8 @@
+.row
+  .col-12
+    .hero
+      h1 = t(".edit_tag")
+
+= render 'form', tag: @tag
+
+= link_to t("shared.buttons.btn_back"), tags_path, class: "btn btn-outline-secondary mt-3"

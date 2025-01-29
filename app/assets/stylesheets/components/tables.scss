@@ -1,0 +1,11 @@
+.table-striped tbody tr {
+    transition: background-color 0.15s;
+
+    &:nth-of-type(odd) {
+        background-color: rgba($primary-color, 0.05);
+    }
+
+    &:hover {
+        background-color: rgba($primary-color, 0.15);
+    }
+}

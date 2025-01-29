@@ -1,0 +1,69 @@
+.row
+  .col-12
+    .hero
+      h1 = t('.hero_title')
+
+.row.justify-content-center.mt-4
+  .col-md-12
+    .card
+      .card-body
+
+        h3.card-title.mb-3
+          = @task.title
+
+        - if @task.project
+          p
+            b = t('.project')
+            = @task.project.title
+
+        p
+          b= t('.status')
+          |
+          = @task.is_done ? " #{t('.done')}" : " #{t('.not_done')}"
+          |
+          - if @task.is_done
+            = link_to " #{t('.link_toggle_not_done')}",
+                    toggle_done_task_path(@task),
+                    method: :patch,
+                    data: { turbo_method: :patch },
+                    class: "ms-2 text-decoration-none"
+          - else
+            = link_to " #{t('.link_toggle_done')}",
+                    toggle_done_task_path(@task),
+                    method: :patch,
+                    data: { turbo_method: :patch },
+                    class: "ms-2 text-decoration-none"
+
+        - if @task.description.present?
+          .mt-2
+            b= t('.description')
+            p.mt-1
+              = @task.description
+        - else
+          p.text-muted.mt-2= t('.no_description')
+
+        - if @task.tags.any?
+          hr
+          p.mb-2
+            b= t('.tags')
+          - @task.tags.each do |tag|
+            span.badge.bg-info.mx-1= tag.title
+
+        - if @task.attachment.attached?
+          hr
+          p
+            b= t('.attachment')
+            br
+            = link_to @task.attachment.filename,
+                    rails_blob_path(@task.attachment, disposition: 'attachment'),
+                    class: "text-decoration-none",
+                    download: true
+
+      .card-footer.bg-white.border-0
+        = link_to t('.link_edit'), edit_task_path(@task), class: "btn btn-secondary me-2"
+        = link_to t('.link_delete'),
+                task_path(@task),
+                data: { turbo_method: :delete, turbo_confirm: t('shared.buttons.confirm_delete') },
+                class: "btn btn-danger"
+
+    = link_to t('.link_back_to_list'), tasks_path, class: "btn btn-outline-secondary mt-3"
